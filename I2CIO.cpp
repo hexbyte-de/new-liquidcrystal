@@ -194,9 +194,12 @@ int I2CIO::digitalWrite ( uint8_t pin, uint8_t level )
    // -------------------------------------------------------------------
    if ( ( _initialised ) && ( pin <= 7 ) )
    {
-      // Only write to HIGH the port if the port has been configured as
-      // an OUTPUT pin. Add the new state of the pin to the shadow
-      writeVal = ( 1 << pin ) & ~_dirMask;
+      // Only write HIGH the values of the ports that have been initialised as
+      // outputs updating the output shadow of the device
+      // 15-FEB-2018 - fix, all I/Os initialized as input must be written as HIGH
+      //    _shadow = ( value & ~(_dirMask) );
+      _shadow = ( value | _dirMask );
+   
       if ( level == HIGH )
       {
          _shadow |= writeVal;
