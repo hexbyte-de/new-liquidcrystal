@@ -180,7 +180,7 @@ void LiquidCrystal::setBacklight ( uint8_t value )
       // On older 1.x Arduino have to check using hack
       if(digitalPinToTimer(_backlightPin) != NOT_ON_TIMER)
 #else
-      if(0) // if neither of the above we assume no PWM
+      if(false) // if neither of the above we assume no PWM
 #endif
       {
          // Check for control polarity inversion
