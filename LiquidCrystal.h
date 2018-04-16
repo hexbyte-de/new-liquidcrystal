@@ -61,11 +61,11 @@ public:
    LiquidCrystal(uint8_t rs, uint8_t enable,
                  uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
                  uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,
-                 uint8_t backlightPin, t_backlighPol pol);
+                 uint8_t backlightPin, t_backlightPol pol);
    LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
                  uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
                  uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,
-                 uint8_t backlightPin, t_backlighPol pol);   
+                 uint8_t backlightPin, t_backlightPol pol);   
    /*!
     @method     
     @abstract   4 bit LCD constructors.
@@ -80,10 +80,10 @@ public:
    // Constructors with backlight control
    LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
                  uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
-                 uint8_t backlightPin, t_backlighPol pol);
+                 uint8_t backlightPin, t_backlightPol pol);
    LiquidCrystal(uint8_t rs, uint8_t enable,
                  uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
-                 uint8_t backlightPin, t_backlighPol pol);
+                 uint8_t backlightPin, t_backlightPol pol);
    /*!
     @function
     @abstract   Send a particular value to the LCD.
@@ -106,7 +106,7 @@ public:
     @param      pin: pin assigned to the backlight
     @param      pol: backlight pin control polarity (POSITIVE, NEGATIVE).
     */
-   void setBacklightPin ( uint8_t pin, t_backlighPol pol );
+   void setBacklightPin ( uint8_t pin, t_backlightPol pol );
    
    /*!
     @function

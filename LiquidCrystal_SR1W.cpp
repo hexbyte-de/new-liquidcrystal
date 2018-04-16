@@ -38,7 +38,7 @@
 // CONSTRUCTORS
 // ---------------------------------------------------------------------------
 // Assuming 1 line 8 pixel high font
-LiquidCrystal_SR1W::LiquidCrystal_SR1W (uint8_t srdata, t_sr1w_circuitType circuitType, t_backlighPol blpol)
+LiquidCrystal_SR1W::LiquidCrystal_SR1W (uint8_t srdata, t_sr1w_circuitType circuitType, t_backlightPol blpol)
 {
 	init ( srdata, circuitType, blpol, 1, 0 );
 }
@@ -48,7 +48,7 @@ LiquidCrystal_SR1W::LiquidCrystal_SR1W (uint8_t srdata, t_sr1w_circuitType circu
 
 //
 // init
-void LiquidCrystal_SR1W::init(uint8_t srdata, t_sr1w_circuitType circuitType, t_backlighPol blpol, uint8_t lines, uint8_t font)
+void LiquidCrystal_SR1W::init(uint8_t srdata, t_sr1w_circuitType circuitType, t_backlightPol blpol, uint8_t lines, uint8_t font)
 {
 	_srRegister = fio_pinToOutputRegister(srdata);
 	_srMask = fio_pinToBit(srdata);

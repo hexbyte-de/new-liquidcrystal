@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">New LiquidCrystal library
-   &#160;<span id="projectnumber">1.3.3</span>
+   &#160;<span id="projectnumber">1.3.5</span>
    </div>
    <div id="projectbrief">Generic LCD control library</div>
   </td>
@@ -135,24 +135,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;   LiquidCrystal_SI2C (uint8_t lcd_Addr);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="comment">// Constructor with backlight control</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;   LiquidCrystal_SI2C (uint8_t lcd_Addr, uint8_t backlighPin, t_backlighPol pol);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;   LiquidCrystal_SI2C (uint8_t lcd_Addr, uint8_t backlighPin, t_backlightPol pol);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;   LiquidCrystal_SI2C( uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;   <span class="comment">// Constructor with backlight control</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   LiquidCrystal_SI2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                     uint8_t backlighPin, t_backlighPol pol);   </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                     uint8_t backlighPin, t_backlightPol pol);   </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;   </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;   LiquidCrystal_SI2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                     uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7 );</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;   <span class="comment">// Constructor with backlight control</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   LiquidCrystal_SI2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                     uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                     uint8_t backlighPin, t_backlighPol pol);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                     uint8_t backlighPin, t_backlightPol pol);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_l_c_d.html#a3f587d1cbb2d59765ef60a5216b56fea">begin</a>(uint8_t cols, uint8_t rows, uint8_t charsize = LCD_5x8DOTS);   </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;   </div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;   <span class="keyword">virtual</span> <span class="keywordtype">void</span> send(uint8_t value, uint8_t mode);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;   </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_l_c_d.html#a53f4ee9b39d9ab3d7ae4d9f8dedca3bc">setBacklightPin</a> ( uint8_t value, t_backlighPol pol );</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_l_c_d.html#af5c7096209ebd944ddad770c5db74564">setBacklightPin</a> ( uint8_t value, t_backlightPol pol );</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;   </div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_l_c_d.html#a3305570d7b37eb93f2cf840263c15828">setBacklight</a> ( uint8_t value );</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
@@ -186,9 +186,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_l_c_d_html"><div class="ttname"><a href="class_l_c_d.html">LCD</a></div><div class="ttdef"><b>Definition:</b> LCD.h:187</div></div>
+<div class="ttc" id="class_l_c_d_html_af5c7096209ebd944ddad770c5db74564"><div class="ttname"><a href="class_l_c_d.html#af5c7096209ebd944ddad770c5db74564">LCD::setBacklightPin</a></div><div class="ttdeci">virtual void setBacklightPin(uint8_t value, t_backlightPol pol)</div><div class="ttdef"><b>Definition:</b> LCD.h:486</div></div>
 <div class="ttc" id="class_l_c_d_html_a3305570d7b37eb93f2cf840263c15828"><div class="ttname"><a href="class_l_c_d.html#a3305570d7b37eb93f2cf840263c15828">LCD::setBacklight</a></div><div class="ttdeci">virtual void setBacklight(uint8_t value)</div><div class="ttdef"><b>Definition:</b> LCD.h:505</div></div>
 <div class="ttc" id="class_l_c_d_html_a3f587d1cbb2d59765ef60a5216b56fea"><div class="ttname"><a href="class_l_c_d.html#a3f587d1cbb2d59765ef60a5216b56fea">LCD::begin</a></div><div class="ttdeci">virtual void begin(uint8_t cols, uint8_t rows, uint8_t charsize=LCD_5x8DOTS)</div><div class="ttdef"><b>Definition:</b> LCD.cpp:79</div></div>
-<div class="ttc" id="class_l_c_d_html_a53f4ee9b39d9ab3d7ae4d9f8dedca3bc"><div class="ttname"><a href="class_l_c_d.html#a53f4ee9b39d9ab3d7ae4d9f8dedca3bc">LCD::setBacklightPin</a></div><div class="ttdeci">virtual void setBacklightPin(uint8_t value, t_backlighPol pol)</div><div class="ttdef"><b>Definition:</b> LCD.h:486</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

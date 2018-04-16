@@ -82,7 +82,7 @@ LiquidCrystal::LiquidCrystal(uint8_t rs,  uint8_t enable,
 LiquidCrystal::LiquidCrystal(uint8_t rs, uint8_t enable,
                              uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
                              uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,
-                             uint8_t backlightPin, t_backlighPol pol)
+                             uint8_t backlightPin, t_backlightPol pol)
 {
    init(LCD_8BIT, rs, 255, enable, d0, d1, d2, d3, d4, d5, d6, d7);
    setBacklightPin ( backlightPin, pol );
@@ -91,7 +91,7 @@ LiquidCrystal::LiquidCrystal(uint8_t rs, uint8_t enable,
 LiquidCrystal::LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
                              uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
                              uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,
-                             uint8_t backlightPin, t_backlighPol pol)
+                             uint8_t backlightPin, t_backlightPol pol)
 {
    init(LCD_8BIT, rs, rw, enable, d0, d1, d2, d3, d4, d5, d6, d7);
    setBacklightPin ( backlightPin, pol );
@@ -99,7 +99,7 @@ LiquidCrystal::LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
 
 LiquidCrystal::LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
                              uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
-                             uint8_t backlightPin, t_backlighPol pol)
+                             uint8_t backlightPin, t_backlightPol pol)
 {
    init(LCD_4BIT, rs, rw, enable, d0, d1, d2, d3, 0, 0, 0, 0);
    setBacklightPin ( backlightPin, pol );
@@ -107,7 +107,7 @@ LiquidCrystal::LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
 
 LiquidCrystal::LiquidCrystal(uint8_t rs, uint8_t enable,
                              uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
-                             uint8_t backlightPin, t_backlighPol pol)
+                             uint8_t backlightPin, t_backlightPol pol)
 {
    init(LCD_4BIT, rs, 255, enable, d0, d1, d2, d3, 0, 0, 0, 0);
    setBacklightPin ( backlightPin, pol );
@@ -152,7 +152,7 @@ void LiquidCrystal::send(uint8_t value, uint8_t mode)
 
 //
 // setBacklightPin
-void LiquidCrystal::setBacklightPin ( uint8_t pin, t_backlighPol pol )
+void LiquidCrystal::setBacklightPin ( uint8_t pin, t_backlightPol pol )
 {
    pinMode ( pin, OUTPUT );       // Difine the backlight pin as output
    _backlightPin = pin;

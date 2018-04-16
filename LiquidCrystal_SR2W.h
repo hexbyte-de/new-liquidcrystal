@@ -148,7 +148,7 @@ public:
     @param srclock[in]  Arduino pin for shift register clock line.
     @param blpol[in]    optional backlight polarity (default = POSITIVE)
     */
-   LiquidCrystal_SR2W (uint8_t srdata, uint8_t srclock, t_backlighPol blpol = POSITIVE);
+   LiquidCrystal_SR2W (uint8_t srdata, uint8_t srclock, t_backlightPol blpol = POSITIVE);
    
    /*!
     @function
@@ -183,7 +183,7 @@ private:
     @abstract   Initializes the LCD pin allocation
     @discussion Initializes the LCD pin allocation and configuration.
     */
-   void init ( uint8_t srdata, uint8_t srclock, t_backlighPol blpol, uint8_t lines, uint8_t font );
+   void init ( uint8_t srdata, uint8_t srclock, t_backlightPol blpol, uint8_t lines, uint8_t font );
    
    /*!
     * @method
