@@ -211,7 +211,7 @@ void LiquidCrystal_SR::send(uint8_t value, uint8_t mode)
 
 //
 // setBacklightPin
-void LiquidCrystal_SR::setBacklightPin ( uint8_t pin, t_backlighPol pol )
+void LiquidCrystal_SR::setBacklightPin ( uint8_t pin, t_backlightPol pol )
 { }
 
 //

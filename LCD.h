@@ -194,7 +194,7 @@ inline static void waitUsec ( uint16_t uSec )
  @abstract   Define backlight control polarity
  @discussion Backlight control polarity. @see setBacklightPin.
  */
-typedef enum { POSITIVE, NEGATIVE } t_backlighPol;
+typedef enum { POSITIVE, NEGATIVE } t_backlightPol;
 
 class LCD : public Print 
 {
@@ -495,7 +495,7 @@ public:
     @param      value: pin associated to backlight control.
     @param      pol: backlight polarity control (POSITIVE, NEGATIVE)
     */
-   virtual void setBacklightPin ( uint8_t value, t_backlighPol pol ) { };
+   virtual void setBacklightPin ( uint8_t value, t_backlightPol pol ) { };
    
    /*!
     @function
@@ -549,7 +549,7 @@ protected:
    uint8_t _displaymode;      // Text entry mode to the LCD
    uint8_t _numlines;         // Number of lines of the LCD, initialized with begin()
    uint8_t _cols;             // Number of columns in the LCD
-   t_backlighPol _polarity;   // Backlight polarity
+   t_backlightPol _polarity;   // Backlight polarity
    
 private:
    /*!

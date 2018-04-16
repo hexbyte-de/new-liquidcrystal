@@ -169,6 +169,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a718da3a638deb59bd1c7a5222a52d98a inherit pub_methods_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a191639be183be1476c9bfe6d455d23b2 inherit pub_methods_class_l_c_d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_c_d.html#a191639be183be1476c9bfe6d455d23b2">off</a> (void)</td></tr>
 <tr class="separator:a191639be183be1476c9bfe6d455d23b2 inherit pub_methods_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5c7096209ebd944ddad770c5db74564 inherit pub_methods_class_l_c_d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_c_d.html#af5c7096209ebd944ddad770c5db74564">setBacklightPin</a> (uint8_t value, t_backlightPol pol)</td></tr>
+<tr class="separator:af5c7096209ebd944ddad770c5db74564 inherit pub_methods_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d89cc2e62f72afb5f15a7fd812900e3 inherit pub_methods_class_l_c_d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_c_d.html#a2d89cc2e62f72afb5f15a7fd812900e3">write</a> (uint8_t value)</td></tr>
 <tr class="separator:a2d89cc2e62f72afb5f15a7fd812900e3 inherit pub_methods_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -190,9 +192,9 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_numlines</b></td>
 <tr class="memitem:a88b16ea0e5c7d1cabc5007d48bcbd2b0 inherit pro_attribs_class_l_c_d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88b16ea0e5c7d1cabc5007d48bcbd2b0"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_cols</b></td></tr>
 <tr class="separator:a88b16ea0e5c7d1cabc5007d48bcbd2b0 inherit pro_attribs_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a990338759d2abe10b0fb1743b7789566 inherit pro_attribs_class_l_c_d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a990338759d2abe10b0fb1743b7789566"></a>
-t_backlighPol&#160;</td><td class="memItemRight" valign="bottom"><b>_polarity</b></td></tr>
-<tr class="separator:a990338759d2abe10b0fb1743b7789566 inherit pro_attribs_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105d00dd3f3eb036e39cd45d8df44a0d inherit pro_attribs_class_l_c_d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a105d00dd3f3eb036e39cd45d8df44a0d"></a>
+t_backlightPol&#160;</td><td class="memItemRight" valign="bottom"><b>_polarity</b></td></tr>
+<tr class="separator:a105d00dd3f3eb036e39cd45d8df44a0d inherit pro_attribs_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae1396bcd5e9c5b7ed13182c166de776b"></a>
@@ -408,9 +410,6 @@ t_backlighPol&#160;</td><td class="memItemRight" valign="bottom"><b>_polarity</b
 <a class="anchor" id="a894d0ea8ea61c1d15acd8a26d417e477"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LiquidCrystal_SR3W::setBacklightPin </td>
@@ -422,7 +421,7 @@ t_backlighPol&#160;</td><td class="memItemRight" valign="bottom"><b>_polarity</b
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">t_backlighPol&#160;</td>
-          <td class="paramname"><em>pol</em> = <code>POSITIVE</code>&#160;</td>
+          <td class="paramname"><em>pol</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -430,11 +429,6 @@ t_backlighPol&#160;</td><td class="memItemRight" valign="bottom"><b>_polarity</b
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Sets the pin to control the backlight.  Sets the pin in the device to control the backlight. This device doesn't support dimming backlight capability.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -444,8 +438,6 @@ t_backlighPol&#160;</td><td class="memItemRight" valign="bottom"><b>_polarity</b
   </table>
   </dd>
 </dl>
-
-<p>Reimplemented from <a class="el" href="class_l_c_d.html#a53f4ee9b39d9ab3d7ae4d9f8dedca3bc">LCD</a>.</p>
 
 </div>
 </div>

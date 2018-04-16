@@ -112,7 +112,7 @@ LiquidCrystal_I2C::LiquidCrystal_I2C( uint8_t lcd_Addr )
 
 
 LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t backlighPin, 
-                                     t_backlighPol pol = POSITIVE)
+                                     t_backlightPol pol = POSITIVE)
 {
    config(lcd_Addr, EN, RW, RS, D4, D5, D6, D7);
    setBacklightPin(backlighPin, pol);
@@ -126,7 +126,7 @@ LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
 
 LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
                                      uint8_t Rs, uint8_t backlighPin, 
-                                     t_backlighPol pol = POSITIVE)
+                                     t_backlightPol pol = POSITIVE)
 {
    config(lcd_Addr, En, Rw, Rs, D4, D5, D6, D7);
    setBacklightPin(backlighPin, pol);
@@ -142,7 +142,7 @@ LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
 LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw,
                                      uint8_t Rs, uint8_t d4, uint8_t d5,
                                      uint8_t d6, uint8_t d7, uint8_t backlighPin, 
-                                     t_backlighPol pol = POSITIVE )
+                                     t_backlightPol pol = POSITIVE )
 {
    config(lcd_Addr, En, Rw, Rs, d4, d5, d6, d7);
    setBacklightPin(backlighPin, pol);
@@ -167,7 +167,7 @@ void LiquidCrystal_I2C::begin(uint8_t cols, uint8_t lines, uint8_t dotsize)
 
 //
 // setBacklightPin
-void LiquidCrystal_I2C::setBacklightPin ( uint8_t value, t_backlighPol pol = POSITIVE )
+void LiquidCrystal_I2C::setBacklightPin ( uint8_t value, t_backlightPol pol = POSITIVE )
 {
    _backlightPinMask = ( 1 << value );
    _polarity = pol;

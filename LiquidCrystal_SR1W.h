@@ -324,7 +324,7 @@ public:
     @param blpol[in]        optional backlight polarity (default = POSITIVE)
     */
    LiquidCrystal_SR1W (uint8_t srdata, t_sr1w_circuitType circuitType, 
-                       t_backlighPol blpol = POSITIVE);
+                       t_backlightPol blpol = POSITIVE);
    
    /*!
     @function
@@ -359,7 +359,7 @@ private:
     @abstract   Initializes the LCD pin allocation
     @discussion Initializes the LCD pin allocation and configuration.
     */
-   void init ( uint8_t srdata, t_sr1w_circuitType circuitType, t_backlighPol blpol, 
+   void init ( uint8_t srdata, t_sr1w_circuitType circuitType, t_backlightPol blpol, 
                uint8_t lines, uint8_t font );
    
    /*!
