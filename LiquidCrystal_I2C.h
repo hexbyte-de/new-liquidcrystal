@@ -144,6 +144,25 @@ public:
     */
    void setBacklight ( uint8_t value );
 
+  /*!
+   @function
+   @abstract   Initialises class private variables
+   @discussion This is the class single point for initialising private variables.
+   Making config public would enable to inherit and overload the methdo by a custom one.
+
+   @param      lcd_Addr[in] I2C address of the IO expansion module. For I2CLCDextraIO,
+   the address can be configured using the on board jumpers.
+   @param      En[in] LCD En (Enable) pin connected to the IO extender module
+   @param      Rw[in] LCD Rw (Read/write) pin connected to the IO extender module
+   @param      Rs[in] LCD Rs (Reset) pin connected to the IO extender module
+   @param      d4[in] LCD data 0 pin map on IO extender module
+   @param      d5[in] LCD data 1 pin map on IO extender module
+   @param      d6[in] LCD data 2 pin map on IO extender module
+   @param      d7[in] LCD data 3 pin map on IO extender module
+   */
+  void config (uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs,
+               uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7 );
+
 private:
 
    /*!
@@ -152,24 +171,6 @@ private:
     @discussion Initializes the LCD class and IO expansion module.
     */
    int  init();
-
-   /*!
-    @function
-    @abstract   Initialises class private variables
-    @discussion This is the class single point for initialising private variables.
-
-    @param      lcd_Addr[in] I2C address of the IO expansion module. For I2CLCDextraIO,
-    the address can be configured using the on board jumpers.
-    @param      En[in] LCD En (Enable) pin connected to the IO extender module
-    @param      Rw[in] LCD Rw (Read/write) pin connected to the IO extender module
-    @param      Rs[in] LCD Rs (Reset) pin connected to the IO extender module
-    @param      d4[in] LCD data 0 pin map on IO extender module
-    @param      d5[in] LCD data 1 pin map on IO extender module
-    @param      d6[in] LCD data 2 pin map on IO extender module
-    @param      d7[in] LCD data 3 pin map on IO extender module
-    */
-   void config (uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs,
-                uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7 );
 
    /*!
     @method

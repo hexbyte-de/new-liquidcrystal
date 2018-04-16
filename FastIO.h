@@ -45,12 +45,12 @@
 #include <util/atomic.h> // for critical section management
 typedef uint8_t fio_bit;
 typedef volatile uint8_t *fio_register;
-
+// __AVR__ processor end
 
 #elif defined(__PIC32MX__)
 typedef uint32_t fio_bit;
 typedef volatile uint32_t *fio_register;
-
+// __PIC32MX__ processor end
 
 #else
 // fallback to Arduino standard digital i/o routines
@@ -59,7 +59,7 @@ typedef volatile uint32_t *fio_register;
 #define ATOMIC_RESTORESTATE
 typedef uint8_t fio_bit;
 typedef uint8_t fio_register;
-#endif
+#endif // Processor dependent fast IO definition 
 
 
 
