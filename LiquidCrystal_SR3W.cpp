@@ -136,7 +136,7 @@ LiquidCrystal_SR3W::LiquidCrystal_SR3W(uint8_t data, uint8_t clk, uint8_t strobe
 }
 
 LiquidCrystal_SR3W::LiquidCrystal_SR3W(uint8_t data, uint8_t clk, uint8_t strobe,
-                                       uint8_t backlighPin, t_backlighPol pol)
+                                       uint8_t backlighPin, t_backlightPol pol)
 {
    init( data, clk, strobe, RS, RW, EN, D4, D5, D6, D7 );
    setBacklightPin(backlighPin, pol);
@@ -152,7 +152,7 @@ LiquidCrystal_SR3W::LiquidCrystal_SR3W(uint8_t data, uint8_t clk, uint8_t strobe
 LiquidCrystal_SR3W::LiquidCrystal_SR3W(uint8_t data, uint8_t clk, uint8_t strobe, 
                                        uint8_t En, uint8_t Rw, uint8_t Rs, 
                                        uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,
-                                       uint8_t backlighPin, t_backlighPol pol)
+                                       uint8_t backlighPin, t_backlightPol pol)
 {
    init( data, clk, strobe, Rs, Rw, En, d4, d5, d6, d7 );
    setBacklightPin(backlighPin, pol);
@@ -180,7 +180,7 @@ void LiquidCrystal_SR3W::send(uint8_t value, uint8_t mode)
 }
 
 
-void LiquidCrystal_SR3W::setBacklightPin ( uint8_t value, t_backlighPol pol = POSITIVE )
+void LiquidCrystal_SR3W::setBacklightPin ( uint8_t value, t_backlightPol pol = POSITIVE )
 {
    _backlightPinMask = ( 1 << value );
    _backlightStsMask = LCD_NOBACKLIGHT;

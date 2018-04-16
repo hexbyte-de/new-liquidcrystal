@@ -50,7 +50,7 @@ public:
     */
    LiquidCrystal_I2C (uint8_t lcd_Addr);
    // Constructor with backlight control
-   LiquidCrystal_I2C (uint8_t lcd_Addr, uint8_t backlighPin, t_backlighPol pol);
+   LiquidCrystal_I2C (uint8_t lcd_Addr, uint8_t backlighPin, t_backlightPol pol);
 
    /*!
     @method
@@ -67,7 +67,7 @@ public:
    LiquidCrystal_I2C( uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs);
    // Constructor with backlight control
    LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs,
-                     uint8_t backlighPin, t_backlighPol pol);
+                     uint8_t backlighPin, t_backlightPol pol);
 
    /*!
     @method
@@ -90,7 +90,7 @@ public:
    // Constructor with backlight control
    LiquidCrystal_I2C(uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs,
                      uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,
-                     uint8_t backlighPin, t_backlighPol pol);
+                     uint8_t backlighPin, t_backlightPol pol);
    /*!
     @function
     @abstract   LCD initialization and associated HW.
@@ -131,7 +131,7 @@ public:
 
     @param      0: backlight off, 1..255: backlight on.
     */
-   void setBacklightPin ( uint8_t value, t_backlighPol pol );
+   void setBacklightPin ( uint8_t value, t_backlightPol pol );
 
    /*!
     @function

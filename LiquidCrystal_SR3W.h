@@ -90,7 +90,7 @@ public:
    LiquidCrystal_SR3W(uint8_t data, uint8_t clk, uint8_t strobe);
    // Constructor with backlight control
    LiquidCrystal_SR3W(uint8_t data, uint8_t clk, uint8_t strobe, 
-                      uint8_t backlighPin, t_backlighPol pol);   
+                      uint8_t backlighPin, t_backlightPol pol);   
    
    /*!
     @method     
@@ -116,7 +116,7 @@ public:
    LiquidCrystal_SR3W( uint8_t data, uint8_t clk, uint8_t strobe,
                       uint8_t En, uint8_t Rw, uint8_t Rs, 
                       uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7,
-                      uint8_t backlighPin, t_backlighPol pol);
+                      uint8_t backlighPin, t_backlightPol pol);
    
    /*!
     @function
@@ -142,7 +142,7 @@ public:
     respectively.
     @param      pol: polarity POSITIVE|NEGATIVE.
     */
-   void setBacklightPin ( uint8_t value, t_backlighPol pol );
+   void setBacklightPin ( uint8_t value, t_backlightPol pol );
    
    /*!
     @function
