@@ -143,7 +143,7 @@ public:
     @param      mode: backlight mode (HIGH|LOW)
     @param      pol: backlight polarity
     */
-   void setBacklightPin ( uint8_t pin, t_backlighPol pol );
+   void setBacklightPin ( uint8_t pin, t_backlightPol pol );
    
    /*!
     @function
