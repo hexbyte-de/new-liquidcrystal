@@ -350,74 +350,78 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#ifndef _LIQUIDCRYSTAL_SR1W_</span></div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#define _LIQUIDCRYSTAL_SR1W_</span></div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#include &quot;LCD.h&quot;</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#include &quot;FastIO.h&quot;</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">// 1-wire SR timing constants</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">// NOTE:</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">//  The 1.5k resistor (1.2k - 1.8k with a 20% tolerance)</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">//   takes between 2.376uS and 4.36uS to fully charge or discharge</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">//   the 2.2n capacitor (1.98n - 2.42n with a 10% tolerance).</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">//  We round this up to a 5uS delay to provide an additional safety margin.</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">#define SR1W_DELAY_US       5</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="preprocessor">#define SR1W_DELAY()        { delayMicroseconds(SR1W_DELAY_US); numDelays++; }</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">// 1-wire SR output bit constants</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">#define SR1W_UNUSED_MASK    0x01    // Set unused bit(s) to &#39;1&#39; as they are slightly faster to clock in.</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor">#define SR1W_D7_MASK        0x02</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#define SR1W_D6_MASK        0x04</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#define SR1W_D5_MASK        0x08</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor">#define SR1W_D4_MASK        0x10</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor">#define SR1W_BL_MASK        0x20</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">#define SR1W_RS_MASK        0x40</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="preprocessor">#define SR1W_EN_MASK        0x80    // This cannot be changed. It has to be the first thing shifted in.</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#define SR1W_ATOMIC_WRITE_LOW(reg, mask)    ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { *reg &amp;= ~mask; }</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">#define SR1W_ATOMIC_WRITE_HIGH(reg, mask)   ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { *reg |= mask; }</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> { SW_CLEAR, HW_CLEAR } t_sr1w_circuitType;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#if defined (__AVR__)</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#include &quot;LCD.h&quot;</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#include &quot;FastIO.h&quot;</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">// 1-wire SR timing constants</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">// NOTE:</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">//  The 1.5k resistor (1.2k - 1.8k with a 20% tolerance)</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">//   takes between 2.376uS and 4.36uS to fully charge or discharge</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment">//   the 2.2n capacitor (1.98n - 2.42n with a 10% tolerance).</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">//  We round this up to a 5uS delay to provide an additional safety margin.</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="preprocessor">#define SR1W_DELAY_US       5</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="preprocessor">#define SR1W_DELAY()        { delayMicroseconds(SR1W_DELAY_US); numDelays++; }</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">// 1-wire SR output bit constants</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#define SR1W_UNUSED_MASK    0x01    // Set unused bit(s) to &#39;1&#39; as they are slightly faster to clock in.</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#define SR1W_D7_MASK        0x02</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor">#define SR1W_D6_MASK        0x04</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor">#define SR1W_D5_MASK        0x08</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">#define SR1W_D4_MASK        0x10</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="preprocessor">#define SR1W_BL_MASK        0x20</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">#define SR1W_RS_MASK        0x40</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#define SR1W_EN_MASK        0x80    // This cannot be changed. It has to be the first thing shifted in.</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor">#define SR1W_ATOMIC_WRITE_LOW(reg, mask)    ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { *reg &amp;= ~mask; }</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="preprocessor">#define SR1W_ATOMIC_WRITE_HIGH(reg, mask)   ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { *reg |= mask; }</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
-<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="class_liquid_crystal___s_r1_w.html">  299</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_liquid_crystal___s_r1_w.html">LiquidCrystal_SR1W</a> : <span class="keyword">public</span> <a class="code" href="class_l_c_d.html">LCD</a></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;{</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;   <a class="code" href="class_liquid_crystal___s_r1_w.html#a33bff2c123d3dc42a829b0f8034912c9">LiquidCrystal_SR1W</a> (uint8_t srdata, t_sr1w_circuitType circuitType, </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                       t_backlighPol blpol = POSITIVE);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_liquid_crystal___s_r1_w.html#a7fc0b03977907b4d526a6b9e49a331b1">send</a>(uint8_t value, uint8_t mode);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;   </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;   </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_liquid_crystal___s_r1_w.html#a82d844569eb258559afb40ab354eb0a5">setBacklight</a> ( uint8_t mode );</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;   </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> { SW_CLEAR, HW_CLEAR } t_sr1w_circuitType;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="keyword">class </span>LiquidCrystal_SR1W : <span class="keyword">public</span> <a class="code" href="class_l_c_d.html">LCD</a></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;{</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   LiquidCrystal_SR1W (uint8_t srdata, t_sr1w_circuitType circuitType, </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                       t_backlighPol blpol = POSITIVE);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;   <span class="keyword">virtual</span> <span class="keywordtype">void</span> send(uint8_t value, uint8_t mode);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;   </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;   </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_l_c_d.html#a3305570d7b37eb93f2cf840263c15828">setBacklight</a> ( uint8_t mode );</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;   </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   <span class="keywordtype">void</span> init ( uint8_t srdata, t_sr1w_circuitType circuitType, t_backlighPol blpol, </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;               uint8_t lines, uint8_t font );</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;   </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;   uint8_t clearSR ();</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;   </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;   uint8_t loadSR (uint8_t val);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;   </div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;   fio_register _srRegister; <span class="comment">// Serial PIN</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;   fio_bit _srMask;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;   </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;   t_sr1w_circuitType _circuitType;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;   </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;   <span class="keywordtype">void</span> init ( uint8_t srdata, t_sr1w_circuitType circuitType, t_backlighPol blpol, </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;               uint8_t lines, uint8_t font );</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;   </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;   uint8_t clearSR ();</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;   </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;   uint8_t loadSR (uint8_t val);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;   </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;   fio_register _srRegister; <span class="comment">// Serial PIN</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;   fio_bit _srMask;</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;   </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;   uint8_t _blPolarity;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;   uint8_t _blMask;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;};</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_liquid_crystal___s_r1_w_html"><div class="ttname"><a href="class_liquid_crystal___s_r1_w.html">LiquidCrystal_SR1W</a></div><div class="ttdef"><b>Definition:</b> LiquidCrystal_SR1W.h:299</div></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;   t_sr1w_circuitType _circuitType;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;   </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;   uint8_t _blPolarity;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;   uint8_t _blMask;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;};</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">#error &quot;ONLY SUPPORTED ON AVR PROCESSORS&quot;</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#endif // defined (__AVR__)</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_l_c_d_html"><div class="ttname"><a href="class_l_c_d.html">LCD</a></div><div class="ttdef"><b>Definition:</b> LCD.h:187</div></div>
-<div class="ttc" id="class_liquid_crystal___s_r1_w_html_a7fc0b03977907b4d526a6b9e49a331b1"><div class="ttname"><a href="class_liquid_crystal___s_r1_w.html#a7fc0b03977907b4d526a6b9e49a331b1">LiquidCrystal_SR1W::send</a></div><div class="ttdeci">virtual void send(uint8_t value, uint8_t mode)</div><div class="ttdef"><b>Definition:</b> LiquidCrystal_SR1W.cpp:194</div></div>
-<div class="ttc" id="class_liquid_crystal___s_r1_w_html_a82d844569eb258559afb40ab354eb0a5"><div class="ttname"><a href="class_liquid_crystal___s_r1_w.html#a82d844569eb258559afb40ab354eb0a5">LiquidCrystal_SR1W::setBacklight</a></div><div class="ttdeci">void setBacklight(uint8_t mode)</div><div class="ttdef"><b>Definition:</b> LiquidCrystal_SR1W.cpp:235</div></div>
-<div class="ttc" id="class_liquid_crystal___s_r1_w_html_a33bff2c123d3dc42a829b0f8034912c9"><div class="ttname"><a href="class_liquid_crystal___s_r1_w.html#a33bff2c123d3dc42a829b0f8034912c9">LiquidCrystal_SR1W::LiquidCrystal_SR1W</a></div><div class="ttdeci">LiquidCrystal_SR1W(uint8_t srdata, t_sr1w_circuitType circuitType, t_backlighPol blpol=POSITIVE)</div><div class="ttdef"><b>Definition:</b> LiquidCrystal_SR1W.cpp:40</div></div>
+<div class="ttc" id="class_l_c_d_html_a3305570d7b37eb93f2cf840263c15828"><div class="ttname"><a href="class_l_c_d.html#a3305570d7b37eb93f2cf840263c15828">LCD::setBacklight</a></div><div class="ttdeci">virtual void setBacklight(uint8_t value)</div><div class="ttdef"><b>Definition:</b> LCD.h:505</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -127,6 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2eaf86f62d1f169b3763b03fbf88f70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af11b8fa0082616e2b6e6e4238589d8a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_liquid_crystal___i2_c.html#af11b8fa0082616e2b6e6e4238589d8a8">setBacklight</a> (uint8_t value)</td></tr>
 <tr class="separator:af11b8fa0082616e2b6e6e4238589d8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb997350478bdc0ab8eb5cc5623a2ad9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_liquid_crystal___i2_c.html#adb997350478bdc0ab8eb5cc5623a2ad9">config</a> (uint8_t lcd_Addr, uint8_t En, uint8_t Rw, uint8_t Rs, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7)</td></tr>
+<tr class="separator:adb997350478bdc0ab8eb5cc5623a2ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_l_c_d"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_l_c_d')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_l_c_d.html">LCD</a></td></tr>
 <tr class="memitem:a00bb2db1390721abc7b24ac4b8c276c8 inherit pub_methods_class_l_c_d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_c_d.html#a00bb2db1390721abc7b24ac4b8c276c8">LCD</a> ()</td></tr>
 <tr class="separator:a00bb2db1390721abc7b24ac4b8c276c8 inherit pub_methods_class_l_c_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -397,6 +399,82 @@ t_backlighPol&#160;</td><td class="memItemRight" valign="bottom"><b>_polarity</b
 </dl>
 
 <p>Reimplemented from <a class="el" href="class_l_c_d.html#a3f587d1cbb2d59765ef60a5216b56fea">LCD</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adb997350478bdc0ab8eb5cc5623a2ad9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LiquidCrystal_I2C::config </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>lcd_Addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>En</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Rw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Rs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>d4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>d5</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>d6</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>d7</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialises class private variables  This is the class single point for initialising private variables. Making config public would enable to inherit and overload the methdo by a custom one.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lcd_Addr[in]</td><td>I2C address of the IO expansion module. For I2CLCDextraIO, the address can be configured using the on board jumpers. </td></tr>
+    <tr><td class="paramname">En[in]</td><td><a class="el" href="class_l_c_d.html">LCD</a> En (Enable) pin connected to the IO extender module </td></tr>
+    <tr><td class="paramname">Rw[in]</td><td><a class="el" href="class_l_c_d.html">LCD</a> Rw (Read/write) pin connected to the IO extender module </td></tr>
+    <tr><td class="paramname">Rs[in]</td><td><a class="el" href="class_l_c_d.html">LCD</a> Rs (Reset) pin connected to the IO extender module </td></tr>
+    <tr><td class="paramname">d4[in]</td><td><a class="el" href="class_l_c_d.html">LCD</a> data 0 pin map on IO extender module </td></tr>
+    <tr><td class="paramname">d5[in]</td><td><a class="el" href="class_l_c_d.html">LCD</a> data 1 pin map on IO extender module </td></tr>
+    <tr><td class="paramname">d6[in]</td><td><a class="el" href="class_l_c_d.html">LCD</a> data 2 pin map on IO extender module </td></tr>
+    <tr><td class="paramname">d7[in]</td><td><a class="el" href="class_l_c_d.html">LCD</a> data 3 pin map on IO extender module </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
