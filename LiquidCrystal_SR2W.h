@@ -4,7 +4,8 @@
 //
 //    This program is free software: you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation, either version 3 of the License.
+//    the Free Software Foundation, either version 3 of the License, or
+//    any later version.
 //
 //    This program is distributed in the hope that it will be useful,
 //    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,7 +17,6 @@
 //    If not, see <https://www.gnu.org/licenses/gpl-3.0.en.html>.
 // 
 // ---------------------------------------------------------------------------
-
 //
 // @file LiquidCrystal_SR2W.h
 // Connects a hd44780 LCD using 2 pins from the Arduino, via an 8-bit 
