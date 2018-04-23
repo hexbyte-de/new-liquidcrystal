@@ -165,7 +165,11 @@ int I2CIO::write ( uint8_t value )
    {
       // Only write HIGH the values of the ports that have been initialised as
       // outputs updating the output shadow of the device
-      _shadow = ( value & ~(_dirMask) );
+      
+      //
+      // 15-FEB-2018 - fix, all I/Os initialized as input must be written as HIGH
+      //    _shadow = ( value & ~(_dirMask) );
+      _shadow = ( value | _dirMask );
 
       Wire.beginTransmission ( _i2cAddr );
 #if (ARDUINO <  100)
