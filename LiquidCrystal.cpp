@@ -161,6 +161,18 @@ void LiquidCrystal::setBacklightPin ( uint8_t pin, t_backlightPol pol )
 }
 
 //
+// ESP32 complains if not included
+#if defined(ARDUINO_ARCH_ESP32)
+void analogWrite(uint8_t channel, uint32_t value, uint32_t valueMax = 255) {
+  // calculate duty, 8191 from 2 ^ 13 - 1
+  uint32_t duty = (8191 / valueMax) * min(value, valueMax);
+
+  // write duty to LEDC
+  ledcWrite(channel, duty);
+}
+#endif
+
+//
 // setBackligh
 void LiquidCrystal::setBacklight ( uint8_t value )
 {
