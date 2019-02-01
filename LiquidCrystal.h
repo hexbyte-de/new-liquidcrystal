@@ -108,6 +108,21 @@ public:
     */
    void setBacklightPin ( uint8_t pin, t_backlightPol pol );
    
+#if defined(ARDUINO_ARCH_ESP32)
+   /*!
+    @function
+    @abstract   Wrapper around ESP32-hal-ledcWrite.
+    @discussion The ESP32 MCU does not have the analogWrite() function.
+    This wrapper converts the analogWrite() function to the ledcWrite()
+    on an ESP32 MCU.
+
+    @param      channel: analog pin
+    @param      value: from 0 to valueMax
+    @param      valueMax: default: 255, Max: 1023
+   */
+   void analogWrite( uint8_t channel, uint32_t value, uint32_t valueMax );
+#endif
+
    /*!
     @function
     @abstract   Switch-on/off the LCD backlight.
